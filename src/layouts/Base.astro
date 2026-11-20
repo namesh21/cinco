@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { SITE } from '../site.config';
 import { abs, categoryUrl, getCategory } from '../lib/content';
+import TickerBar from '../components/TickerBar.astro';
 
 interface Props {
   title: string;
@@ -141,6 +142,7 @@ const year = new Date().getFullYear();
         </a>
       </div>
     </header>
+    <TickerBar />
 
     <main id="conteudo">
       <slot />

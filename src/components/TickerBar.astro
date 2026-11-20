@@ -1,0 +1,94 @@
+---
+// Barra de cotações no topo (estilo "ticker"). Dados de /api/quotes (functions/api/quotes.js).
+---
+<div class="ticker" aria-label="Cotações (com atraso)" data-ticker>
+  <div class="ticker-track" aria-live="off">
+    <span class="ticker-loading">Carregando cotações…</span>
+  </div>
+</div>
+
+<script>
+  type Q = { symbol: string; label: string; price: number; changePct: number; kind: 'fx' | 'stock' | 'index' };
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const brl0 = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const num = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
+  const pct = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'always' });
+
+  const price = (q: Q) =>
+    q.kind === 'index' ? `${num.format(q.price)} pts` : q.symbol === 'BTC-BRL' ? brl0.format(q.price) : brl.format(q.price);
+
+  function item(q: Q) {
+    const el = document.createElement('span');
+    el.className = 'tick';
+    const dir = q.changePct > 0 ? 'up' : q.changePct < 0 ? 'down' : 'flat';
+    const a = document.createElement('b'); a.textContent = q.label;
+    const p = document.createElement('span'); p.textContent = price(q);
+    const c = document.createElement('span'); c.className = `chg ${dir}`;
+    c.textContent = `${dir === 'up' ? '▲' : dir === 'down' ? '▼' : '•'} ${pct.format(q.changePct)}%`;
+    el.append(a, p, c);
+    return el;
+  }
+
+  async function load(box: HTMLElement) {
+    const track = box.querySelector('.ticker-track')!;
+    try {
+      const res = await fetch('/api/quotes');
+      if (!res.ok) throw 0;
+      const { items, updated } = (await res.json()) as { items: Q[]; updated: string };
+      if (!items.length) throw 0;
+      const group = document.createElement('div');
+      group.className = 'ticker-group';
+      items.forEach((q) => group.append(item(q)));
+      const when = document.createElement('span');
+      when.className = 'tick tick-note';
+      when.textContent = `Atualizado às ${new Date(updated).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' })} · com atraso`;
+      group.append(when);
+      const clone = group.cloneNode(true) as HTMLElement;
+      clone.setAttribute('aria-hidden', 'true');
+      track.replaceChildren(group, clone);
+      // velocidade constante independente do nº de itens (~60px/s)
+      requestAnimationFrame(() => box.style.setProperty('--dur', `${Math.max(20, group.scrollWidth / 60)}s`));
+      box.classList.add('is-ready');
+    } catch {
+      box.hidden = true;
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ticker]').forEach((box) => {
+    load(box);
+    setInterval(() => load(box), 5 * 60 * 1000);
+  });
+</script>
+
+<style>
+  .ticker {
+    height: 36px;
+    overflow: hidden;
+    background: #f1f3ef;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
+    white-space: nowrap;
+    position: relative;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  }
+  .ticker-track { display: flex; height: 100%; align-items: center; width: max-content; }
+  .ticker.is-ready .ticker-track { animation: ticker var(--dur, 40s) linear infinite; }
+  .ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+  .ticker-loading { padding: 0 20px; color: var(--muted); }
+  :global(.ticker-group) { display: flex; align-items: center; }
+  :global(.tick) { display: inline-flex; align-items: center; gap: 7px; padding: 0 18px; border-right: 1px solid var(--line); height: 20px; }
+  :global(.tick b) { font-weight: 700; color: var(--ink); }
+  :global(.tick span:first-of-type) { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  :global(.chg) { font-weight: 600; font-variant-numeric: tabular-nums; }
+  :global(.chg.up) { color: #138a5e; }
+  :global(.chg.down) { color: #c8322b; }
+  :global(.chg.flat) { color: var(--muted); }
+  :global(.tick-note) { color: var(--muted); font-size: 12px; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+    .ticker.is-ready .ticker-track { animation: none; }
+    :global(.ticker-group[aria-hidden]) { display: none; }
+  }
+</style>
