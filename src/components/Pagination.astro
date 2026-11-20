@@ -1,0 +1,22 @@
+---
+interface Props { current: number; total: number; base: string }
+const { current, total, base } = Astro.props;
+const href = (n: number) => (n === 1 ? base : `${base}page/${n}/`);
+const nums = Array.from({ length: total }, (_, i) => i + 1).filter(
+  (n) => n === 1 || n === total || Math.abs(n - current) <= 2,
+);
+---
+{total > 1 && (
+  <nav class="pagination" aria-label="Paginação">
+    {current > 1 && <a href={href(current - 1)} rel="prev">← Mais recentes</a>}
+    <ol>
+      {nums.map((n, i) => (
+        <>
+          {i > 0 && n - nums[i - 1] > 1 && <li aria-hidden="true">…</li>}
+          <li>{n === current ? <span aria-current="page">{n}</span> : <a href={href(n)}>{n}</a>}</li>
+        </>
+      ))}
+    </ol>
+    {current < total && <a href={href(current + 1)} rel="next">Artigos antigos →</a>}
+  </nav>
+)}

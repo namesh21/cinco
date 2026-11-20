@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from './PostCard.astro';
+import Pagination from './Pagination.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Sidebar from './Sidebar.astro';
+import { type Post, abs, postUrl } from '../lib/content';
+
+interface Props {
+  title: string;
+  heading: string;
+  intro?: string;
+  description: string;
+  posts: Post[];
+  current: number;
+  total: number;
+  base: string;
+  crumbs: { name: string; href?: string }[];
+  noindex?: boolean;
+  kind?: 'CollectionPage' | 'Blog';
+}
+const { title, heading, intro, description, posts, current, total, base, crumbs, noindex = false, kind = 'CollectionPage' } = Astro.props;
+const path = current === 1 ? base : `${base}page/${current}/`;
+const prev = current > 1 ? (current === 2 ? base : `${base}page/${current - 1}/`) : undefined;
+const next = current < total ? `${base}page/${current + 1}/` : undefined;
+const suffix = current > 1 ? ` — página ${current}` : '';
+
+const jsonLd = [
+  {
+    '@type': kind,
+    '@id': `${abs(path)}#page`,
+    url: abs(path),
+    name: heading + suffix,
+    description,
+    isPartOf: { '@id': 'https://cincoinvest.com.br/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(postUrl(p)), name: p.data.title })),
+    },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ name: 'Início', href: '/' }, ...crumbs].map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.href ?? path),
+    })),
+  },
+];
+---
+<Base title={title + suffix} description={description + suffix} path={path} {noindex} {jsonLd} {prev} {next}>
+  <div class="wrap">
+    <Breadcrumbs items={crumbs} />
+    <header class="archive-header">
+      <h1>{heading}{suffix && <small>{suffix}</small>}</h1>
+      {intro && current === 1 && <p>{intro}</p>}
+    </header>
+    <div class="layout">
+      <div>
+        {posts.length ? (
+          <div class="grid">{posts.map((p, i) => <PostCard post={p} eager={i < 2} />)}</div>
+        ) : <p>Nenhum artigo por aqui ainda.</p>}
+        <Pagination current={current} total={total} base={base} />
+      </div>
+      <Sidebar />
+    </div>
+  </div>
+</Base>

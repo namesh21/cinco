@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../lib/content';
+const recent = (await getPosts()).slice(0, 4);
+---
+<Base title="Página não encontrada" description="A página que você procurou não existe ou mudou de endereço." noindex>
+  <div class="wrap">
+    <header class="archive-header">
+      <h1>Página não encontrada</h1>
+      <p>O endereço pode ter mudado. Tente a <a href="/busca/">busca</a> ou veja os artigos mais recentes:</p>
+    </header>
+    <div class="grid grid--4">{recent.map((p) => <PostCard post={p} headingLevel="h2" />)}</div>
+  </div>
+</Base>

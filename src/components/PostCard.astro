@@ -1,0 +1,24 @@
+---
+import { type Post, postUrl, getCategory, categoryUrl, formatDate, readingTime } from '../lib/content';
+interface Props { post: Post; eager?: boolean; large?: boolean; headingLevel?: 'h2' | 'h3' }
+const { post, eager = false, large = false, headingLevel = 'h2' } = Astro.props;
+const { title, description, cover, pubDate, category } = post.data;
+const cat = getCategory(category);
+const H = headingLevel;
+---
+<article class:list={['card', { 'card--large': large }]}>
+  <a href={postUrl(post)} class="card-media" tabindex="-1" aria-hidden="true">
+    {cover ? (
+      <img src={cover.src} alt="" width={cover.width ?? 1200} height={cover.height ?? 675}
+        loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'} />
+    ) : (
+      <span class="card-placeholder">5⤴</span>
+    )}
+  </a>
+  <div class="card-body">
+    <a class="kicker" href={categoryUrl(cat.slug)}>{cat.name}</a>
+    <H class="card-title"><a href={postUrl(post)}>{title}</a></H>
+    {large && <p class="card-desc">{description}</p>}
+    <p class="meta"><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time> · {readingTime(post.body)} min de leitura</p>
+  </div>
+</article>

@@ -1,0 +1,30 @@
+{
+  "name": "cincoinvest",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cinco Invest — O Guia do Novo Investidor (Astro)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "import:wp": "node scripts/import-wp.mjs",
+    "import:wp:noimg": "node scripts/import-wp.mjs --no-images",
+    "db:init": "wrangler d1 execute cincoinvest-views --remote --file=db/schema.sql",
+    "pages:dev": "astro build && wrangler pages dev dist"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "@mixmark-io/domino": "^2.2.0",
+    "turndown": "^7.2.5",
+    "turndown-plugin-gfm": "^1.0.2",
+    "wrangler": "^4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,37 @@
+---
+// "Mais lidos": busca os slugs mais vistos em /api/views/top e os títulos em /posts.json.
+interface Props { limit?: number; title?: string }
+const { limit = 5, title = 'Mais lidos' } = Astro.props;
+---
+<section class="widget top-posts" data-top={limit} hidden>
+  <h2 class="widget-title">{title}</h2>
+  <ol></ol>
+</section>
+
+<script>
+  const fmt = new Intl.NumberFormat('pt-BR');
+  document.querySelectorAll<HTMLElement>('[data-top]').forEach(async (box) => {
+    try {
+      const limit = box.dataset.top;
+      const [top, index] = await Promise.all([
+        fetch(`/api/views/top?limit=${limit}`).then((r) => (r.ok ? r.json() : [])),
+        fetch('/posts.json').then((r) => r.json()),
+      ]);
+      const bySlug = new Map((index.posts as { slug: string; title: string; url: string }[]).map((p) => [p.slug, p]));
+      const items = (top as { slug: string; count: number }[]).filter((t) => bySlug.has(t.slug));
+      if (!items.length) return;
+      const ol = box.querySelector('ol')!;
+      for (const t of items) {
+        const p = bySlug.get(t.slug)!;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = p.url; a.textContent = p.title;
+        const small = document.createElement('small');
+        small.textContent = `${fmt.format(t.count)} visualizações`;
+        li.append(a, small);
+        ol.append(li);
+      }
+      box.hidden = false;
+    } catch { /* sem API */ }
+  });
+</script>

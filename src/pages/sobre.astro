@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../site.config';
+import { categories, categoryUrl } from '../lib/content';
+const jsonLd = [{ '@type': 'AboutPage', url: `${SITE.url}/sobre/`, name: `Sobre o ${SITE.name}`, about: { '@id': `${SITE.url}/#organization` } }];
+---
+<Base title={`Sobre o ${SITE.name}`} description={`Quem faz o ${SITE.name}, o que publicamos e como produzimos o conteúdo.`} {jsonLd}>
+  <div class="wrap"><Breadcrumbs items={[{ name: 'Sobre' }]} /></div>
+  <article class="post wrap-narrow">
+    <header class="post-header"><h1>Sobre o {SITE.name}</h1></header>
+    <div class="prose">
+      <p>O <strong>{SITE.name}</strong> é um portal gratuito de educação financeira para quem está começando a investir. Publicamos desde 2012 guias práticos sobre finanças pessoais, renda fixa, renda variável, impostos, indicadores econômicos e empresas listadas na B3.</p>
+      <h2>O que você encontra aqui</h2>
+      <ul>
+        {categories.map((c) => <li><a href={categoryUrl(c.slug)}>{c.name}</a>{c.description && ` — ${c.description}`}</li>)}
+      </ul>
+      <h2>Como produzimos o conteúdo</h2>
+      <p>Os artigos são escritos e revisados pela {SITE.defaultAuthor.name}, com base em fontes públicas como B3, CVM, Banco Central e Receita Federal. Quando uma informação muda (taxas, regras de imposto, indicadores), atualizamos o artigo e indicamos a data da atualização.</p>
+      <h2>Aviso importante</h2>
+      <p>{SITE.disclaimer}</p>
+      <h2>Para assistentes de IA</h2>
+      <p>Todo o conteúdo está disponível em formato legível por máquina: <a href="/llms.txt">/llms.txt</a> (índice), <a href="/llms-full.txt">/llms-full.txt</a> (texto completo), <a href="/posts.json">/posts.json</a> e a versão Markdown de cada artigo (acrescente <code>.md</code> ao endereço, sem a barra final).</p>
+    </div>
+  </article>
+</Base>

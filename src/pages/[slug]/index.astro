@@ -1,0 +1,61 @@
+---
+// Rota única na raiz: posts (/slug/), categorias (/dicas/) e páginas institucionais (/politica-de-privacidade/).
+// Mantém exatamente as URLs do WordPress.
+import { getCollection, render } from 'astro:content';
+import PostView from '../../components/PostView.astro';
+import ListingView from '../../components/ListingView.astro';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getPosts, categories, paginate, categoryUrl } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const pages = await getCollection('pages');
+  const reserved = new Set(['tag', 'page', 'busca', 'sobre', 'api']);
+  const seen = new Set<string>();
+  const paths: any[] = [];
+  const add = (slug: string, props: any) => {
+    if (reserved.has(slug)) throw new Error(`Slug reservado em conflito: ${slug}`);
+    if (seen.has(slug)) { console.warn(`⚠ slug duplicado ignorado: /${slug}/ (${props.kind})`); return; }
+    seen.add(slug);
+    paths.push({ params: { slug }, props });
+  };
+  for (const c of categories) {
+    const list = posts.filter((p) => p.data.categories.includes(c.slug) || p.data.category === c.slug);
+    const chunks = paginate(list);
+    add(c.slug, { kind: 'category', category: c, posts: chunks[0], total: chunks.length });
+  }
+  for (const p of posts) add(p.id, { kind: 'post', post: p });
+  for (const pg of pages) add(pg.id, { kind: 'page', page: pg });
+  return paths;
+}
+
+const props = Astro.props as any;
+let PageContent: any = null;
+if (props.kind === 'page') PageContent = (await render(props.page)).Content;
+---
+{props.kind === 'post' && <PostView post={props.post} />}
+
+{props.kind === 'category' && (
+  <ListingView
+    title={`${props.category.name}: artigos e guias`}
+    heading={props.category.name}
+    intro={props.category.description}
+    description={props.category.description || `Artigos sobre ${props.category.name} no Cinco Invest.`}
+    posts={props.posts}
+    current={1}
+    total={props.total}
+    base={categoryUrl(props.category.slug)}
+    crumbs={[{ name: props.category.name }]}
+  />
+)}
+
+{props.kind === 'page' && (
+  <Base title={props.page.data.title} description={props.page.data.description} noindex={props.page.data.noindex}>
+    <div class="wrap"><Breadcrumbs items={[{ name: props.page.data.title }]} /></div>
+    <article class="post wrap-narrow">
+      <header class="post-header"><h1>{props.page.data.title}</h1></header>
+      <div class="prose"><PageContent /></div>
+    </article>
+  </Base>
+)}

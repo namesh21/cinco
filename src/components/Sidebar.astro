@@ -1,0 +1,13 @@
+---
+import TopPosts from './TopPosts.astro';
+import { categories, categoryUrl } from '../lib/content';
+---
+<aside class="sidebar">
+  <TopPosts />
+  <section class="widget">
+    <h2 class="widget-title">Categorias</h2>
+    <ul class="cat-list">
+      {categories.map((c) => <li><a href={categoryUrl(c.slug)}>{c.name}</a> <span>{c.count}</span></li>)}
+    </ul>
+  </section>
+</aside>

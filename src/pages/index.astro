@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import Pagination from '../components/Pagination.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE } from '../site.config';
+import { getPosts, paginate, categories, categoryUrl, abs, postUrl } from '../lib/content';
+
+const all = await getPosts();
+const chunks = paginate(all);
+const first = chunks[0];
+const lead = first.find((p) => p.data.featured) ?? first[0];
+const rest = first.filter((p) => p !== lead);
+const jsonLd = [{
+  '@type': 'Blog',
+  '@id': `${SITE.url}/#blog`,
+  url: SITE.url + '/',
+  name: SITE.name,
+  description: SITE.description,
+  inLanguage: SITE.locale,
+  publisher: { '@id': `${SITE.url}/#organization` },
+  blogPost: first.map((p) => ({ '@type': 'BlogPosting', headline: p.data.title, url: abs(postUrl(p)), datePublished: p.data.pubDate.toISOString() })),
+}];
+---
+<Base title={`${SITE.brand} — ${SITE.tagline}`} fullTitle description={SITE.description} path="/" jsonLd={jsonLd} next={chunks.length > 1 ? '/page/2/' : undefined}>
+  <section class="hero">
+    <div class="wrap">
+      <h1>{SITE.tagline}</h1>
+      <p>Finanças pessoais e investimentos explicados sem enrolação — de renda fixa a análise de empresas da Bolsa.</p>
+      <ul class="chips">
+        {categories.slice(0, 8).map((c) => <li><a href={categoryUrl(c.slug)}>{c.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+  <div class="wrap layout">
+    <div>
+      {lead && <PostCard post={lead} eager large />}
+      <h2 class="section-title">Artigos recentes</h2>
+      <div class="grid">{rest.map((p, i) => <PostCard post={p} eager={i < 1} headingLevel="h3" />)}</div>
+      <Pagination current={1} total={chunks.length} base="/" />
+    </div>
+    <Sidebar />
+  </div>
+</Base>

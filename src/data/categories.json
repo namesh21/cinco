@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "cinco-maneiras",
+    "name": "Cinco Maneiras",
+    "description": "Cinco maneiras de alcançar seu objetivo.",
+    "count": 72
+  },
+  {
+    "slug": "dicas",
+    "name": "Dicas",
+    "description": "Dicas gerais sobre finaças. Informações para facilitar sua decisão.",
+    "count": 68
+  },
+  {
+    "slug": "news",
+    "name": "News",
+    "description": "Noticias (News) de economia relevantes para seu dia.",
+    "count": 21
+  },
+  {
+    "slug": "empresas",
+    "name": "Empresas",
+    "description": "Guias, informações e noticias sobre empresas listadas na Bolsa.",
+    "count": 10
+  },
+  {
+    "slug": "renda-fixa",
+    "name": "Renda Fixa",
+    "description": "Novidades e indicadores que afetam o mercado de renda fixa.",
+    "count": 9
+  },
+  {
+    "slug": "indicadores",
+    "name": "Indicadores",
+    "description": "Indicadores econômicos, significados e seu real valor.",
+    "count": 8
+  },
+  {
+    "slug": "renda-variavel",
+    "name": "Renda Variável",
+    "description": "Renda variável, dicas e informaçõe sobre essa categoria de investimento",
+    "count": 5
+  },
+  {
+    "slug": "impostos",
+    "name": "Impostos",
+    "description": "Noticias, regras e guias que podem te ajduar na hora dos impostos.",
+    "count": 4
+  },
+  {
+    "slug": "quem-e",
+    "name": "Quem é",
+    "description": "Biografias de investidores, CEOs e pessoas relevantes no mercado financeiro.",
+    "count": 3
+  }
+]

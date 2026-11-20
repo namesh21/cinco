@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+<Base title="Buscar artigos" description="Busque entre todos os artigos do Cinco Invest." noindex>
+  <div class="wrap-narrow search-page">
+    <Breadcrumbs items={[{ name: 'Busca' }]} />
+    <h1>Buscar artigos</h1>
+    <form role="search" action="/busca/" method="get">
+      <label for="q" class="sr-only">Termo de busca</label>
+      <input id="q" name="q" type="search" placeholder="Ex.: tesouro direto, imposto de renda, CDB…" autocomplete="off" />
+    </form>
+    <p id="status" aria-live="polite"></p>
+    <ol id="results" class="search-results"></ol>
+  </div>
+  <script>
+    const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const input = document.getElementById('q') as HTMLInputElement;
+    const list = document.getElementById('results')!;
+    const status = document.getElementById('status')!;
+    type P = { title: string; url: string; description: string; category: string; tags: string[]; pubDate: string };
+    let posts: P[] = [];
+    const run = () => {
+      const terms = norm(input.value).split(/\s+/).filter((t) => t.length > 1);
+      list.replaceChildren();
+      if (!terms.length) { status.textContent = ''; return; }
+      const hits = posts
+        .map((p) => {
+          const t = norm(p.title), d = norm(p.description), k = norm(p.tags.join(' ') + ' ' + p.category);
+          let s = 0;
+          for (const term of terms) { if (t.includes(term)) s += 5; if (k.includes(term)) s += 3; if (d.includes(term)) s += 1; }
+          return { p, s, all: terms.every((term) => t.includes(term) || d.includes(term) || k.includes(term)) };
+        })
+        .filter((x) => x.all)
+        .sort((a, b) => b.s - a.s)
+        .slice(0, 30);
+      status.textContent = hits.length ? `${hits.length} resultado(s)` : 'Nenhum artigo encontrado.';
+      for (const { p } of hits) {
+        const li = document.createElement('li');
+        const a = document.createElement('a'); a.href = p.url; a.textContent = p.title;
+        const small = document.createElement('p'); small.textContent = p.description;
+        li.append(a, small); list.append(li);
+      }
+    };
+    fetch('/posts.json').then((r) => r.json()).then((j) => {
+      posts = j.posts;
+      input.value = new URLSearchParams(location.search).get('q') ?? '';
+      run();
+    });
+    input.addEventListener('input', () => {
+      run();
+      const u = new URL(location.href); u.searchParams.set('q', input.value); history.replaceState(null, '', u);
+    });
+  </script>
+</Base>

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { tags, tagUrl } from '../../lib/content';
+const sorted = [...tags].sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+---
+<Base title="Todos os temas" description="Índice de todos os temas abordados no Cinco Invest.">
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: 'Temas' }]} />
+    <header class="archive-header"><h1>Todos os temas</h1></header>
+    <ul class="tag-cloud">
+      {sorted.map((t) => <li><a href={tagUrl(t.slug)}>{t.name} <span>{t.count}</span></a></li>)}
+    </ul>
+  </div>
+</Base>

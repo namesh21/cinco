@@ -1,0 +1,50 @@
+{
+  "users": [{ "id": 1, "name": "namesh", "slug": "namesh", "description": "Profissional de marketing, investidor e entusiasta de novas tecnologias.\r\nComecei minha carreira em TI." }],
+  "categories": [
+    { "id": 1, "count": 72, "description": "Cinco maneiras de alcançar seu objetivo.", "name": "Cinco Maneiras", "slug": "cinco-maneiras", "parent": 0 },
+    { "id": 2, "count": 68, "description": "Dicas gerais sobre finanças. Informações para facilitar sua decisão.", "name": "Dicas", "slug": "dicas", "parent": 0 },
+    { "id": 132, "count": 10, "description": "Guias, informações e notícias sobre empresas listadas na Bolsa.", "name": "Empresas", "slug": "empresas", "parent": 0 },
+    { "id": 131, "count": 9, "description": "Novidades e indicadores que afetam o mercado de renda fixa.", "name": "Renda Fixa", "slug": "renda-fixa", "parent": 0 }
+  ],
+  "tags": [
+    { "id": 245, "count": 1, "description": "", "name": "finanças pessoas", "slug": "financas-pessoas" },
+    { "id": 244, "count": 1, "description": "", "name": "orçamento financeiro", "slug": "orcamento-financeiro" },
+    { "id": 10, "count": 7, "description": "", "name": "renda fixa", "slug": "renda-fixa" },
+    { "id": 11, "count": 0, "description": "", "name": "tag sem uso", "slug": "tag-sem-uso" }
+  ],
+  "media": [
+    { "id": 1381, "source_url": "https://cincoinvest.com.br/wp-content/uploads/2026/06/minidolar-wdon26.jpg", "alt_text": "moeda dourada sobre mesa branca", "title": { "rendered": "Minidolar" }, "media_details": { "width": 1080, "height": 722 } },
+    { "id": 715, "source_url": "https://cincoinvest.com.br/wp-content/uploads/2021/08/orcamento-pessoal.jpeg", "alt_text": "Orcamento Pessoal", "title": { "rendered": "Orcamento Pessoal" }, "media_details": { "width": 999, "height": 662 } },
+    { "id": 1139, "source_url": "https://cincoinvest.com.br/wp-content/uploads/2023/09/O-que-significa-prospeccao.jpg", "alt_text": "O que significa prospecção?", "title": { "rendered": "O que significa prospecção?" }, "media_details": { "width": 1280, "height": 825 } }
+  ],
+  "pages": [
+    { "id": 3, "slug": "politica-de-privacidade", "date": "2020-01-01T00:00:00", "modified": "2024-05-01T10:00:00", "title": { "rendered": "Política de privacidade" }, "content": { "rendered": "<h2>Quem somos</h2><p>O endereço do nosso site é: https://cincoinvest.com.br.</p><h2>Cookies</h2><p>Usamos cookies para medir audiência.</p>" } },
+    { "id": 2, "slug": "pagina-exemplo", "date": "2020-01-01T00:00:00", "modified": "2020-01-01T00:00:00", "title": { "rendered": "Página de exemplo" }, "content": { "rendered": "<p>exemplo</p>" } }
+  ],
+  "posts": [
+    {
+      "id": 1382, "date": "2026-06-29T08:02:11", "date_gmt": "2026-06-29T11:02:11", "modified": "2026-06-29T08:02:11", "modified_gmt": "2026-06-29T11:02:11",
+      "slug": "minidolar-wdon26-analise-tecnica-revela-os-pontos-mais-importantes-do-dia",
+      "title": { "rendered": "Minidólar (WDON26): Análise Técnica Revela os Pontos Mais Importantes do Dia" },
+      "content": { "rendered": "<p>O contrato futuro de Minidólar com vencimento em novembro de 2026, identificado pelo código <strong>WDON26</strong>, continua sendo um dos instrumentos mais negociados na B3.</p>\n<h2>O que é o Minidólar?</h2>\n<p>O Minidólar é o contrato futuro de dólar negociado na B3 em tamanho reduzido, equivalente a USD 10.000 por contrato.</p>\n<h2>Suportes e resistências</h2>\n<h3>Resistências</h3>\n<p>A primeira resistência está em <strong>R$ 5.780</strong>.</p>\n<h3>Suportes</h3>\n<p>O suporte imediato está em <strong>R$ 5.740</strong>.</p>\n<h2>Conclusão</h2>\n<p>Gerencie o risco &#8212; sempre com stop.</p>" },
+      "excerpt": { "rendered": "<p>O contrato futuro de Minidólar com vencimento em novembro de 2026, identificado pelo código WDON26, continua sendo um dos instrumentos mais negociados na B3 entre traders pessoa física e investidores&#8230;</p>" },
+      "author": 1, "featured_media": 1381, "sticky": false, "categories": [1], "tags": [10]
+    },
+    {
+      "id": 713, "date": "2021-08-19T21:09:57", "date_gmt": "2021-08-20T00:09:57", "modified": "2021-08-19T21:09:59", "modified_gmt": "2021-08-20T00:09:59",
+      "slug": "como-montar-um-orcamento-pessoal",
+      "title": { "rendered": "Como montar um Orçamento Pessoal" },
+      "content": { "rendered": "<p class=\"wp-block-paragraph\"><em>O Orçamento Pessoal é a ferramenta mais importante do Planejamento Financeiro Pessoal.</em></p>\n<h2 class=\"wp-block-heading\"><a></a>Principais Conceitos</h2>\n<p>Veremos agora os principais conceitos.</p>\n<h3 class=\"wp-block-heading\"><a></a>Receitas</h3>\n<figure class=\"wp-block-table\"><table><tbody><tr><td>Data</td><td>Categoria</td><td>Valor Efetuado</td><td>Valor Previsto</td></tr><tr><td>05/08/2021</td><td>Salário + Comissão</td><td>2950,00</td><td>3000,00</td></tr></tbody></table></figure>\n<p>Veja também <a href=\"https://cincoinvest.com.br/minidolar-wdon26-analise-tecnica-revela-os-pontos-mais-importantes-do-dia/\" title=\"ProspecÃ§Ã£o\">a análise do minidólar</a>.</p>\n<figure class=\"wp-block-embed is-type-video is-provider-youtube\"><div class=\"wp-block-embed__wrapper\"><iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?feature=oembed\" frameborder=\"0\"></iframe></div></figure>\n<p>[contact-form-7 id=\"12\"]</p>" },
+      "excerpt": { "rendered": "<p>O Orçamento Pessoal é a ferramenta mais importante do Planejamento Financeiro Pessoal. Isso porque é ele quem dará a visão total da saúde financeira hoje e amanhã.&#8230;</p>" },
+      "author": 1, "featured_media": 715, "sticky": false, "categories": [2], "tags": [245, 244, 10]
+    },
+    {
+      "id": 1138, "date": "2023-09-21T17:04:21", "date_gmt": "2023-09-21T20:04:21", "modified": "2023-09-21T17:04:26", "modified_gmt": "2023-09-21T20:04:26",
+      "slug": "o-que-significa-prospeccao",
+      "title": { "rendered": "O que significa prospecção? 12 dicas e conceito!" },
+      "content": { "rendered": "<p><strong>O que significa prospecção</strong>? No contexto empresarial, a prospecção é fundamental.</p>\n<h2><strong>12 dicas</strong></h2>\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"798\" src=\"https://cincoinvest.com.br/wp-content/uploads/2023/09/Afinal-o-que-prospeccao-1024x798.png\" alt=\"O que significa prospecção?\" srcset=\"https://cincoinvest.com.br/wp-content/uploads/2023/09/Afinal-o-que-prospeccao-300x234.png 300w\" /><figcaption class=\"wp-element-caption\">Afinal, o que significa prospecção?</figcaption></figure>\n<ul class=\"wp-block-list\"><li>Confira mais dicas: </li></ul>\n<figure class=\"wp-block-embed is-type-wp-embed\"><div class=\"wp-block-embed__wrapper\"><blockquote class=\"wp-embedded-content\"><a href=\"https://melhorprospeccao.com/prospeccao-sinonimo/\" title=\"ProspecÃ§Ã£o\">Prospecção e Sinônimo: Explorando Abordagens Alternativas</a></blockquote><iframe class=\"wp-embedded-content\" src=\"https://melhorprospeccao.com/prospeccao-sinonimo/embed/\"></iframe></div></figure>\n<p>Fim.</p>" },
+      "excerpt": { "rendered": "<p>O que significa prospecção? No contexto empresarial e comercial, a prospecção é um termo que desempenha um papel fundamental&#8230;</p>" },
+      "author": 2, "featured_media": 1139, "sticky": false, "categories": [2, 132], "tags": []
+    }
+  ]
+}

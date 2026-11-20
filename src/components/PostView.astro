@@ -1,0 +1,121 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import ViewCounter from './ViewCounter.astro';
+import PostCard from './PostCard.astro';
+import { SITE } from '../site.config';
+import {
+  type Post, abs, postUrl, postMdUrl, getCategory, categoryUrl, getTag, tagUrl, getAuthor,
+  formatDate, readingTime, wordCount, wasUpdated, relatedPosts, getPosts,
+} from '../lib/content';
+
+interface Props { post: Post }
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const d = post.data;
+const cat = getCategory(d.category);
+const tagTerms = d.tags.map(getTag);
+const author = getAuthor(d.author);
+const url = abs(postUrl(post));
+const updated = wasUpdated(post);
+const related = relatedPosts(post, await getPosts());
+const toc = headings.filter((h) => h.depth === 2);
+const image = d.cover?.src ?? SITE.defaultImage;
+
+const jsonLd = [
+  {
+    '@type': 'BlogPosting',
+    '@id': `${url}#article`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    headline: d.title,
+    description: d.description,
+    image: { '@type': 'ImageObject', url: abs(image), ...(d.cover?.width ? { width: d.cover.width, height: d.cover.height } : {}) },
+    datePublished: d.pubDate.toISOString(),
+    dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+    author: { '@type': author.slug === SITE.defaultAuthor.slug ? 'Organization' : 'Person', name: author.name, url: abs(author.url) },
+    publisher: { '@id': `${SITE.url}/#organization` },
+    isPartOf: { '@id': `${SITE.url}/#website` },
+    articleSection: cat.name,
+    keywords: tagTerms.map((t) => t.name).join(', ') || undefined,
+    wordCount: wordCount(post.body),
+    timeRequired: `PT${readingTime(post.body)}M`,
+    inLanguage: SITE.locale,
+    encoding: { '@type': 'MediaObject', encodingFormat: 'text/markdown', contentUrl: abs(postMdUrl(post)) },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: SITE.url + '/' },
+      { '@type': 'ListItem', position: 2, name: cat.name, item: abs(categoryUrl(cat.slug)) },
+      { '@type': 'ListItem', position: 3, name: d.title, item: url },
+    ],
+  },
+];
+---
+<Base
+  title={d.title}
+  description={d.description}
+  path={postUrl(post)}
+  image={image}
+  imageAlt={d.cover?.alt}
+  type="article"
+  noindex={d.noindex}
+  jsonLd={jsonLd}
+  markdownAlt={postMdUrl(post)}
+  article={{ published: d.pubDate, modified: d.updatedDate, section: cat.name, tags: tagTerms.map((t) => t.name) }}
+>
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: cat.name, href: categoryUrl(cat.slug) }, { name: d.title }]} />
+  </div>
+  <article class="post wrap-narrow" data-pagefind-body>
+    <header class="post-header">
+      <a class="kicker" href={categoryUrl(cat.slug)}>{cat.name}</a>
+      <h1>{d.title}</h1>
+      <p class="lead">{d.description}</p>
+      <p class="meta">
+        <span>Por <a href={author.url}>{author.name}</a></span>
+        <span><time datetime={d.pubDate.toISOString()}>{formatDate(d.pubDate)}</time></span>
+        {updated && d.updatedDate && <span>Atualizado em <time datetime={d.updatedDate.toISOString()}>{formatDate(d.updatedDate)}</time></span>}
+        <span>{readingTime(post.body)} min de leitura</span>
+        <ViewCounter slug={post.id} />
+      </p>
+    </header>
+
+    {d.cover && (
+      <figure class="post-cover">
+        <img src={d.cover.src} alt={d.cover.alt} width={d.cover.width ?? 1200} height={d.cover.height ?? 675} loading="eager" fetchpriority="high" decoding="async" />
+      </figure>
+    )}
+
+    {toc.length >= 3 && (
+      <nav class="toc" aria-label="Neste artigo">
+        <details open>
+          <summary>Neste artigo</summary>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </details>
+      </nav>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {tagTerms.length > 0 && (
+      <footer class="post-tags">
+        <span>Temas:</span>
+        <ul>{tagTerms.map((t) => <li><a href={tagUrl(t.slug)} rel="tag">{t.name}</a></li>)}</ul>
+      </footer>
+    )}
+
+    <aside class="post-disclaimer" role="note">{SITE.disclaimer}</aside>
+  </article>
+
+  {related.length > 0 && (
+    <section class="related wrap">
+      <h2>Leia também</h2>
+      <div class="grid grid--4">{related.map((p) => <PostCard post={p} headingLevel="h3" />)}</div>
+    </section>
+  )}
+</Base>

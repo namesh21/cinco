@@ -1,0 +1,21 @@
+# Redirecionamentos das URLs antigas do WordPress (Cloudflare Pages)
+/feed/                 /rss.xml          301
+/feed                  /rss.xml          301
+/comments/feed/        /rss.xml          301
+/:slug/feed/           /rss.xml          301
+/author/*              /sobre/           301
+/category/:slug/       /:slug/           301
+/category/:slug/page/:n/ /:slug/page/:n/ 301
+/tag/:slug/page/:n/    /tag/:slug/       301
+/pagina-exemplo/       /                 301
+/sample-page/          /                 301
+/wp-sitemap.xml        /sitemap-index.xml 301
+/sitemap.xml           /sitemap-index.xml 301
+/sitemap_index.xml     /sitemap-index.xml 301
+/post-sitemap.xml      /sitemap-index.xml 301
+/page-sitemap.xml      /sitemap-index.xml 301
+/category-sitemap.xml  /sitemap-index.xml 301
+/post_tag-sitemap.xml  /sitemap-index.xml 301
+/wp-login.php          /                 301
+/wp-admin/*            /                 301
+/xmlrpc.php            /                 301

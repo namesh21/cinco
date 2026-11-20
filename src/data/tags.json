@@ -1,0 +1,1292 @@
+[
+  {
+    "slug": "renda-fixa",
+    "name": "renda fixa",
+    "description": "",
+    "count": 7
+  },
+  {
+    "slug": "cartao-de-credito",
+    "name": "cartão de credito",
+    "description": "",
+    "count": 5
+  },
+  {
+    "slug": "imposto-de-renda",
+    "name": "imposto de renda",
+    "description": "",
+    "count": 5
+  },
+  {
+    "slug": "investimentos",
+    "name": "investimentos",
+    "description": "",
+    "count": 5
+  },
+  {
+    "slug": "renda-variavel",
+    "name": "renda variável",
+    "description": "",
+    "count": 4
+  },
+  {
+    "slug": "taxa-selic",
+    "name": "taxa selic",
+    "description": "",
+    "count": 4
+  },
+  {
+    "slug": "acoes",
+    "name": "ações",
+    "description": "",
+    "count": 3
+  },
+  {
+    "slug": "bolsa-de-valores",
+    "name": "bolsa de valores",
+    "description": "",
+    "count": 3
+  },
+  {
+    "slug": "corretora-de-valores",
+    "name": "corretora de valores",
+    "description": "",
+    "count": 3
+  },
+  {
+    "slug": "ipca",
+    "name": "ipca+",
+    "description": "",
+    "count": 3
+  },
+  {
+    "slug": "anuidade-de-cartao",
+    "name": "anuidade de cartão",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "cartao-nubank",
+    "name": "cartão nubank",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "cartao-sem-taxa",
+    "name": "cartão sem taxa",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "definicoes",
+    "name": "definições",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "desconto",
+    "name": "desconto",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "dinheiro-retido",
+    "name": "dinheiro retido",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "fii",
+    "name": "fii",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "fundos-de-investimento",
+    "name": "fundos de investimento",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "inflacao",
+    "name": "inflação",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "investimento",
+    "name": "Investimento",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "milhas-aereas",
+    "name": "milhas aéreas",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "passagens-aereas",
+    "name": "passagens aéreas",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "selic",
+    "name": "Selic",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "taxa-de-corretagem",
+    "name": "taxa de corretagem",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "tesouro-direto",
+    "name": "tesouro direto",
+    "description": "",
+    "count": 2
+  },
+  {
+    "slug": "agressivo",
+    "name": "agressivo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "alta-da-selic",
+    "name": "alta da selic",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "aplicativo-bancario",
+    "name": "aplicativo bancário",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "aposentadoria",
+    "name": "aposentadoria",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "aposentadoria-privada",
+    "name": "aposentadoria privada",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "app-de-financas",
+    "name": "app de finanças",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "aprendendo-sobre-empresas",
+    "name": "aprendendo sobre empresas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "aumentar-score",
+    "name": "aumentar score",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "aviacao",
+    "name": "aviação",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "b3",
+    "name": "B3",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "banco-sem-taxa",
+    "name": "banco sem taxa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "bcff11",
+    "name": "BCFF11",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "bdrs",
+    "name": "bdrs",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "benjamin-graham",
+    "name": "Benjamin Graham",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "bonds",
+    "name": "bonds",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "bovespa",
+    "name": "bovespa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "caixa-fgts",
+    "name": "Caixa FGTS",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "calculo-do-cdi",
+    "name": "calculo do cdi",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "calculo-ipca",
+    "name": "cálculo IPCA+",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "capital-social",
+    "name": "capital social",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-banco-inter",
+    "name": "cartão Banco Inter",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-black",
+    "name": "cartão black",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-de-credito-2",
+    "name": "cartão de crédito",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-de-credito-itau",
+    "name": "cartão de crédito Itaú",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-de-credito-para-negativado",
+    "name": "cartão de crédito para negativado",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-de-credito-sem-anuidade",
+    "name": "cartão de crédito sem anuidade",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-de-debito",
+    "name": "cartão de debito",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-gold",
+    "name": "cartão gold",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-inter",
+    "name": "cartão inter",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-mercado-pago",
+    "name": "cartão Mercado Pago",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-milhas",
+    "name": "cartão milhas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-platinum",
+    "name": "cartão platinum",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-santander",
+    "name": "cartão Santander",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-santander-sx",
+    "name": "cartão santander sx",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cartao-sem-limite",
+    "name": "cartão sem limite",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cdbs",
+    "name": "cdbs",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cdi",
+    "name": "cdi",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cielo",
+    "name": "Cielo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cinco-maneira",
+    "name": "cinco maneira",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "clear",
+    "name": "clear",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-consultar",
+    "name": "como consultar",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-e-calculado-igpm",
+    "name": "como é calculado igpm",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-funciona",
+    "name": "como funciona",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-funciona-igpm",
+    "name": "como funciona igpm",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-ganhar-dinheiro",
+    "name": "como ganhar dinheiro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-investir",
+    "name": "como investir",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "como-saber-o-score",
+    "name": "como saber o score",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "comprar-acoes",
+    "name": "comprar ações",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "comprar-milhas",
+    "name": "comprar milhas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "conservador",
+    "name": "conservador",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "consorcio-de-apartamento",
+    "name": "consórcio de apartamento",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "conta-digital",
+    "name": "conta digital",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "conta-inativa",
+    "name": "conta inativa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "contrato-social",
+    "name": "contrato social",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "controlar-gastos",
+    "name": "controlar gastos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "corretoras-de-investimentos",
+    "name": "corretoras de investimentos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "corretoras-devalores",
+    "name": "corretoras devalores",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cpf-sujo",
+    "name": "CPF sujo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "debentures",
+    "name": "debentures",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "declaracao-de-imposto",
+    "name": "declaração de imposto",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "definicao-de-commodities",
+    "name": "definição de commodities",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "definicoes-de-inflacao",
+    "name": "definições de inflação",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "deflacao",
+    "name": "deflação",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "descontos",
+    "name": "descontos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "dicas",
+    "name": "dicas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "dinheiro-da-receita-federal",
+    "name": "dinheiro da receita federal",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "dinheiro-de-volta",
+    "name": "dinheiro de volta",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "dinheiro-extra",
+    "name": "dinheiro extra",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "doc",
+    "name": "DOC",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "economia",
+    "name": "economia",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "economizar",
+    "name": "economizar",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "empresa-de-alavancagem",
+    "name": "empresa de alavancagem",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "empresas",
+    "name": "empresas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "energia",
+    "name": "energia",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "etfs",
+    "name": "ETFs",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "eua",
+    "name": "EUA",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "evergrande",
+    "name": "evergrande",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "excel",
+    "name": "excel",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "exchenge-traded-funds",
+    "name": "exchenge-traded funds",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "exploracao-espacial",
+    "name": "exploração espacial",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fazer-consorcio",
+    "name": "fazer consórcio",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fgts",
+    "name": "FGTS",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "financas-pessoas",
+    "name": "finanças pessoas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fmi",
+    "name": "fmi",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundo-de-investimento",
+    "name": "fundo de investimento",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundo-garantidor-de-credito",
+    "name": "fundo garantidor de credito",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundos",
+    "name": "fundos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundos-de-indice",
+    "name": "fundos de índice",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundos-de-papel",
+    "name": "fundos de papel",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundos-de-tijolo",
+    "name": "fundos de tijolo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundos-hibridos",
+    "name": "fundos híbridos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "fundos-imobiliarios",
+    "name": "fundos imobiliarios",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "gastos-mensais",
+    "name": "gastos mensais",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "governo",
+    "name": "governo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "guardar-dinheiro",
+    "name": "guardar dinheiro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "holding",
+    "name": "holding",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "ibovespa",
+    "name": "ibovespa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "igp-m-e-alugueis",
+    "name": "igp-m e alugueis",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "imovel",
+    "name": "imóvel",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "imprimir-dinheiro",
+    "name": "imprimir dinheiro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "indice-futuro",
+    "name": "indice futuro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "indices",
+    "name": "índices",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "inflacao-alta",
+    "name": "inflação alta",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "inss",
+    "name": "INSS",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "internet",
+    "name": "internet",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "investigacao",
+    "name": "investigaçao",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "investimento-na-aposentadoria",
+    "name": "investimento na aposentadoria",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "investir-em-dolar",
+    "name": "investir em dolar",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "investir-no-exterior",
+    "name": "investir no exterior",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "investir-pelo-banco",
+    "name": "investir pelo banco",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "iof",
+    "name": "IOF",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "ipo",
+    "name": "ipo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "ipos-mais-aguardadas",
+    "name": "ipos mais aguardadas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "irpf-2021",
+    "name": "IRPF 2021",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "itau-pao-de-acucar",
+    "name": "Itaú Pão de Açúcar",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "itausa",
+    "name": "Itaúsa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "juros-semestrais",
+    "name": "juros semestrais",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "lista-do-tesouro-nacional",
+    "name": "lista do tesouro nacional",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "lojas-pao-de-acucar",
+    "name": "Lojas Pão de Açúcar",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "malha-fina",
+    "name": "malha fina",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "maquininhas-de-cartao",
+    "name": "maquininhas de cartão",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "marketing-multinivel",
+    "name": "marketing multinivel",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "max-gunther",
+    "name": "Max Gunther",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "mercado-futuro",
+    "name": "mercado futuro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "metodos-de-economia",
+    "name": "métodos de economia",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "micos-da-bolsa",
+    "name": "micos da bolsa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "milhas",
+    "name": "milhas",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "moderado",
+    "name": "moderado",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "moeda-global",
+    "name": "moeda global",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "mxrf11",
+    "name": "MXRF11",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "nathalia-arcuri",
+    "name": "Nathalia Arcuri",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "news",
+    "name": "news",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "nome-sujo",
+    "name": "nome sujo",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "o-que-e-fgc",
+    "name": "o que é fgc",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "o-que-voce-precisa-saber",
+    "name": "o que você precisa saber",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "orcamento-financeiro",
+    "name": "orçamento financeiro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "ouro-espacial",
+    "name": "ouro espacial",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "papeis",
+    "name": "papeis",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "paquistao",
+    "name": "paquistao",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "perfil-nathalia-arcuri",
+    "name": "Perfil Nathalia Arcuri",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "perfis-de-investidor",
+    "name": "perfis de investidor",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "peso-da-inflacao",
+    "name": "peso da inflação",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pf",
+    "name": "pf",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pgbl",
+    "name": "PGBL",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "piramide-financeira",
+    "name": "piramide financeira",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pix",
+    "name": "Pix",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "planilha",
+    "name": "planilha",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "planilha-financeira",
+    "name": "planilha financeira",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pontos-santander-esfera",
+    "name": "pontos santander esfera",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "ponzi",
+    "name": "ponzi",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pos-fixado",
+    "name": "pós-fixado",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pra-que-serve-iof",
+    "name": "pra que serve iof",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "prefixado",
+    "name": "prefixado",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "primo-rico",
+    "name": "Primo RIco",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "produtos-pontos-esfera-santander",
+    "name": "produtos pontos esfera santander",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "programa-de-milhagem",
+    "name": "programa de milhagem",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "quantitative-easing",
+    "name": "Quantitative Easing",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "receita-federal",
+    "name": "Receita Federal",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "renda-fixxa",
+    "name": "renda fixxa",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "rendimento",
+    "name": "rendimento",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "risco-china",
+    "name": "risco china",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "riscos",
+    "name": "riscos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "santander-esfera-pontos",
+    "name": "santander esfera pontos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "saude",
+    "name": "saude",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "score",
+    "name": "score",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "seguro-desemprego",
+    "name": "seguro desemprego",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "serasa",
+    "name": "SERASA",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "significado-de-commodities",
+    "name": "significado de commodities",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "spc",
+    "name": "SPC",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "start-up",
+    "name": "start-up",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "taxa-de-consorcio",
+    "name": "taxa de consórcio",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "taxa-de-transferencia",
+    "name": "taxa de transferência",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "taxa-zero",
+    "name": "taxa zero",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "ted",
+    "name": "TED",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "tesouro",
+    "name": "tesouro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "tesouro-nacional",
+    "name": "tesouro nacional",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "tesouro-selic",
+    "name": "tesouro selic",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "thiago-nigro",
+    "name": "Thiago Nigro",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "titulos",
+    "name": "titulos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "titulos-de-divida",
+    "name": "titulos de divida",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "titulos-publicos-2",
+    "name": "titulos publicos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "titulos-publicos",
+    "name": "títulos públicos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "top-5",
+    "name": "Top 5",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "transferencia-bancaria",
+    "name": "transferência bancária",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "vale-a-pena",
+    "name": "vale a pena",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "vantagens",
+    "name": "vantagens",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "warren-buffett",
+    "name": "Warren Buffett",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "weg",
+    "name": "WEG",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "xp-investimentos",
+    "name": "XP Investimentos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "youtube",
+    "name": "Youtube",
+    "description": "",
+    "count": 1
+  }
+]

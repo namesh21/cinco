@@ -1,0 +1,26 @@
+---
+import ListingView from '../../components/ListingView.astro';
+import { getPosts, tags, tagUrl, tagIsIndexable } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return tags.map((t) => ({
+    params: { tag: t.slug },
+    props: { tag: t, posts: posts.filter((p) => p.data.tags.includes(t.slug)) },
+  }));
+}
+const { tag, posts } = Astro.props;
+const name = tag.name.charAt(0).toUpperCase() + tag.name.slice(1);
+---
+<ListingView
+  title={`${name}: artigos sobre o tema`}
+  heading={name}
+  intro={tag.description}
+  description={tag.description || `Artigos do Cinco Invest sobre ${tag.name}.`}
+  {posts}
+  current={1}
+  total={1}
+  base={tagUrl(tag.slug)}
+  crumbs={[{ name: 'Temas', href: '/tag/' }, { name }]}
+  noindex={!tagIsIndexable(tag.slug)}
+/>

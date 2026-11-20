@@ -1,0 +1,24 @@
+---
+import ListingView from '../../../components/ListingView.astro';
+import { getPosts, categories, paginate, categoryUrl } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return categories.flatMap((c) => {
+    const chunks = paginate(posts.filter((p) => p.data.categories.includes(c.slug) || p.data.category === c.slug));
+    return chunks.slice(1).map((chunk, i) => ({
+      params: { slug: c.slug, page: String(i + 2) },
+      props: { category: c, posts: chunk, current: i + 2, total: chunks.length },
+    }));
+  });
+}
+const { category, posts, current, total } = Astro.props;
+---
+<ListingView
+  title={`${category.name}: artigos e guias`}
+  heading={category.name}
+  description={category.description || `Artigos sobre ${category.name} no Cinco Invest.`}
+  {posts} {current} {total}
+  base={categoryUrl(category.slug)}
+  crumbs={[{ name: category.name, href: categoryUrl(category.slug) }, { name: `Página ${current}` }]}
+/>
