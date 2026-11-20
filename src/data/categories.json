@@ -15,7 +15,7 @@
     "slug": "news",
     "name": "News",
     "description": "Noticias (News) de economia relevantes para seu dia.",
-    "count": 21
+    "count": 22
   },
   {
     "slug": "empresas",
@@ -33,7 +33,7 @@
     "slug": "indicadores",
     "name": "Indicadores",
     "description": "Indicadores econômicos, significados e seu real valor.",
-    "count": 8
+    "count": 9
   },
   {
     "slug": "renda-variavel",

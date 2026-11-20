@@ -111,7 +111,7 @@
     "slug": "inflacao",
     "name": "inflação",
     "description": "",
-    "count": 2
+    "count": 3
   },
   {
     "slug": "investimento",
@@ -1286,6 +1286,30 @@
   {
     "slug": "youtube",
     "name": "Youtube",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "dolar",
+    "name": "dólar",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "cambio",
+    "name": "câmbio",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "banco-central",
+    "name": "Banco Central",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "reservas-internacionais",
+    "name": "reservas internacionais",
     "description": "",
     "count": 1
   }
