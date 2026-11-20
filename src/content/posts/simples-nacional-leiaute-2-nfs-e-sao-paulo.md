@@ -5,6 +5,11 @@ pubDate: "2026-11-20T16:45:00Z"
 category: "impostos"
 categories: ["impostos"]
 tags: ["nfs-e", "simples-nacional", "reforma-tributaria", "nota-fiscal-paulistana"]
+cover:
+  src: "/wp-content/uploads/2026/11/simples-nacional-leiaute-2-nfs-e-sao-paulo.jpg"
+  alt: "Atenção Simples Nacional: a partir de 1º de novembro de 2026, ME e EPP emitem NFS-e exclusivamente pelo Emissor Nacional"
+  width: 1200
+  height: 847
 author: "redacao"
 ---
 Quem emite nota fiscal de serviço em São Paulo pode ter esbarrado, em novembro de 2026, numa mensagem curta e confusa do sistema da Prefeitura:
