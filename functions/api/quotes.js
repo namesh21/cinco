@@ -16,7 +16,7 @@ async function getFx() {
   const r = await fetch(`https://economia.awesomeapi.com.br/json/last/${FX.map((f) => f[0]).join(',')}`, {
     headers: { 'User-Agent': 'cincoinvest.com.br' },
   });
-  if (!r.ok) throw new Error(`awesomeapi ${r.status}`);
+  if (!r.ok) throw new Error(`awesomeapi ${r.status}: ${(await r.text()).slice(0, 160)}`);
   const j = await r.json();
   return FX.map(([pair, label]) => {
     const q = j[pair.replace('-', '')];
@@ -62,7 +62,8 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const idx = s.filter((x) => x.kind === 'index');
   const items = [...idx, ...f, ...s.filter((x) => x.kind !== 'index')].filter((x) => Number.isFinite(x.price));
 
-  const res = new Response(JSON.stringify({ updated: new Date().toISOString(), items }), {
+  const errors = [stocks, fx].filter((x) => x.status === 'rejected').map((x) => String(x.reason?.message || x.reason));
+  const res = new Response(JSON.stringify({ updated: new Date().toISOString(), items, ...(errors.length ? { errors } : {}) }), {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': `public, max-age=${TTL}`,
