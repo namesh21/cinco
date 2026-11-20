@@ -22,7 +22,7 @@ No final de 2020, qualquer investidor passou a ser habilitado para a aquisição
 
 O BRD é nada mais do que um recibo de empresas negociadas no exterior. Ou seja, o investidor aplica o dinheiro na compra de ações de empresas estrangeiras com a intermediação de um custodiante no exterior.
 
-[O que é a Bovespa ?](/o-que-e-a-bovespa-b3/)A principal vantagem é a possibilidade de comprar e vender na B3 da mesma maneira como são feitas com as ações nacionais. O investidor, do mesmo modo como acontece na bolsa brasileira, ganhará com a valorização patrimonial e receberá dividendos.
+[O que é a Bovespa \[B3\]?](/o-que-e-a-bovespa-b3/)A principal vantagem é a possibilidade de comprar e vender na B3 da mesma maneira como são feitas com as ações nacionais. O investidor, do mesmo modo como acontece na bolsa brasileira, ganhará com a valorização patrimonial e receberá dividendos.
 
 Um ponto importante a ser ressaltado, contudo, é que os BDRs são atrelados ao dólar. Como as ações no exterior são vendidas na moeda estrangeira, então qualquer alteração no câmbio pode afetar os rendimentos. De maneira geral, a alta do dólar valoriza o investimento nos BDRS.
 

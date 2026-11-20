@@ -190,13 +190,19 @@ function cleanHtml(html, ctx) {
   // negrito dentro de títulos é redundante
   $$(body, 'h1 strong, h2 strong, h3 strong, h4 strong, h1 b, h2 b, h3 b, h4 b').forEach((b) => b.replaceWith(...b.childNodes));
 
-  // shortcodes remanescentes: registra e remove
-  const SC = /\[\/?[a-z_][\w-]*(?:\s[^\]]*)?\]/gi;
-  const sc = body.innerHTML.match(SC);
-  if (sc) report.shortcodes.push({ post: ctx.slug, shortcodes: [...new Set(sc)].slice(0, 10) });
-  let out = body.innerHTML;
-  if (sc) out = out.replace(SC, '').replace(/<p>\s*<\/p>/g, '');
-  return out;
+  // shortcodes remanescentes: só remove os reais (conhecidos, com atributos "=" ou com fechamento [/x]).
+  // Texto entre colchetes como [cidade] ou [B3] é preservado.
+  const KNOWN = /^(caption|gallery|embed|video|audio|playlist|contact-form-7|wpforms|ninja_forms|mc4wp_form|elementor-template|ads?|adsense|toc|tablepress|shortcode|et_pb_\w+|vc_\w+|su_\w+)$/i;
+  const SC = /\[(\/?)([a-z_][\w-]*)((?:\s[^\]]*)?)\]/gi;
+  const out = body.innerHTML;
+  const closers = new Set([...out.matchAll(/\[\/([a-z_][\w-]*)\]/gi)].map((m) => m[1].toLowerCase()));
+  const isReal = (slash, name, attrs) => KNOWN.test(name) || /=/.test(attrs) || !!slash || closers.has(name.toLowerCase());
+  const found = [...out.matchAll(SC)].filter((m) => isReal(m[1], m[2], m[3])).map((m) => m[0]);
+  if (!found.length) return out;
+  report.shortcodes.push({ post: ctx.slug, shortcodes: [...new Set(found)].slice(0, 10) });
+  return out
+    .replace(SC, (m, slash, name, attrs) => (isReal(slash, name, attrs) ? '' : m))
+    .replace(/<p>\s*<\/p>/g, '');
 }
 
 function toMarkdown(html, ctx) {

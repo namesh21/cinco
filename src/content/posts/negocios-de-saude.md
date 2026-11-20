@@ -47,7 +47,7 @@ A otimização de mecanismos de busca não discrimina o tamanho do negócio. Peq
 
 Ao trabalhar com negócios de saúde, é fundamental realizar uma pesquisa de palavras-chave específicas para o setor. Considere termos médicos, sintomas, tratamentos e procedimentos relevantes.
 
-Além disso, leve em conta palavras-chave de intenção local, como “clínica de saúde em ” ou “especialista em perto de mim”.
+Além disso, leve em conta palavras-chave de intenção local, como “clínica de saúde em \[cidade\]” ou “especialista em \[especialidade\] perto de mim”.
 
 ### 2\. Criação de Conteúdo de Qualidade
 

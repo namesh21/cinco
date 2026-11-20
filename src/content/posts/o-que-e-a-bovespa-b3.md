@@ -41,7 +41,7 @@ A B3 cria e administra sistemas de negociação, compensação, liquidação, de
 
 As operações na B3 são intermediadas por corretoras de investimentos, que disponibilizam o Home Broker para a realização dessas negociações de forma eletrônica e automática.
 
-### Na atualmente estão listadas cerca de 400 empresas divididas por segmentos, entre elas:
+### Na \[B3\]atualmente estão listadas cerca de 400 empresas divididas por segmentos, entre elas:
 
 -   Boing
 -   Magazine Luiza

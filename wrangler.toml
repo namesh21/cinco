@@ -6,5 +6,5 @@ compatibility_date = "2026-11-01"
 [[d1_databases]]
 binding = "VIEWS_DB"
 database_name = "cincoinvest-views"
-# Preencha após rodar: npx wrangler d1 create cincoinvest-views
-database_id = "COLE-AQUI-O-ID-DO-D1"
+# Criado em 2026-11-20 (conta namesh21@hotmail.com)
+database_id = "d293ed51-e831-4d23-a915-42d664cc8090"
