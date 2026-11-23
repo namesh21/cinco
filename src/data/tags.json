@@ -15,7 +15,7 @@
     "slug": "imposto-de-renda",
     "name": "imposto de renda",
     "description": "",
-    "count": 5
+    "count": 6
   },
   {
     "slug": "investimentos",
@@ -1310,6 +1310,30 @@
   {
     "slug": "reservas-internacionais",
     "name": "reservas internacionais",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "pj",
+    "name": "PJ",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "clt",
+    "name": "CLT",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "simples-nacional",
+    "name": "Simples Nacional",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "reforma-tributaria",
+    "name": "reforma tributária",
     "description": "",
     "count": 1
   }

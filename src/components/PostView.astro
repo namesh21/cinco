@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import ViewCounter from './ViewCounter.astro';
 import PostCard from './PostCard.astro';
+import CalcPjClt from './widgets/CalcPjClt.astro';
 import { SITE } from '../site.config';
 import {
   type Post, abs, postUrl, postMdUrl, getCategory, categoryUrl, getTag, tagUrl, getAuthor,
@@ -101,6 +102,7 @@ const jsonLd = [
     <div class="prose">
       <Content />
     </div>
+    {d.widgets.includes('calc-pj') && <CalcPjClt />}
 
     {tagTerms.length > 0 && (
       <footer class="post-tags">

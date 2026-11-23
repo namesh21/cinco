@@ -1,0 +1,173 @@
+---
+// Calculadora CLT x PJ. Entra no post onde houver <div data-widget="calc-pj"></div>.
+---
+<div id="calc-pj-src" hidden>
+  <section class="calc" aria-labelledby="calc-pj-title">
+    <h2 id="calc-pj-title" class="calc-title">Calculadora: quanto cobrar como PJ</h2>
+    <form class="calc-form" novalidate>
+      <fieldset>
+        <legend>Sua vaga CLT (ou a proposta que você tem)</legend>
+        <label>Salário bruto mensal
+          <span class="money"><input name="salario" inputmode="decimal" value="10.000" required /></span>
+        </label>
+        <label>Benefícios por mês <small>VR, VA, plano de saúde, auxílio home office</small>
+          <span class="money"><input name="beneficios" inputmode="decimal" value="1.500" /></span>
+        </label>
+        <label>Bônus ou PLR no ano <small>valor líquido</small>
+          <span class="money"><input name="plr" inputmode="decimal" value="0" /></span>
+        </label>
+        <label>Dependentes no IR
+          <input name="dependentes" type="number" min="0" max="10" value="0" />
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Como PJ</legend>
+        <label>Custos fixos por mês <small>contador, certificado digital, softwares</small>
+          <span class="money"><input name="custos" inputmode="decimal" value="400" /></span>
+        </label>
+        <label>Meses faturados no ano
+          <select name="meses">
+            <option value="12">12 (contrato paga o ano todo)</option>
+            <option value="11">11 (1 mês de férias sem faturar)</option>
+          </select>
+        </label>
+        <label>Margem de segurança <small>sem FGTS de demissão, sem seguro-desemprego</small>
+          <span class="pct"><input name="margem" type="number" min="0" max="100" step="1" value="10" /></span>
+        </label>
+      </fieldset>
+    </form>
+
+    <div class="calc-result" aria-live="polite">
+      <div class="calc-highlight">
+        <p class="calc-kicker">Para empatar com o CLT, cobre no mínimo</p>
+        <p class="calc-big" data-out="equivalente">-</p>
+        <p class="calc-sub">Com margem de <span data-out="margemPct">10%</span>: <strong data-out="sugerido">-</strong> por mês</p>
+        <p class="calc-sub" data-out="anexoMsg"></p>
+      </div>
+
+      <div class="calc-table-wrap">
+        <table class="calc-table">
+          <caption>Comparação em 1 ano, valores em reais</caption>
+          <thead>
+            <tr><th scope="col">Item</th><th scope="col">CLT</th><th scope="col">PJ Anexo III<br /><small>Fator R</small></th><th scope="col">PJ Anexo V<br /><small>pró-labore mínimo</small></th></tr>
+          </thead>
+          <tbody data-out="tabela"></tbody>
+        </table>
+      </div>
+      <p class="calc-note">Simples Nacional com IBS e CBS dentro do DAS (regras de 2027). Tabelas de IR e INSS de 2026, com a isenção até R$ 5 mil da Lei 15.270/2025. Não considera ISS fixo de município, Lucro Presumido nem o Simples híbrido. Use como referência e confirme com seu contador.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+  import { calcular } from '../../lib/pjclt.js';
+
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const pct = new Intl.NumberFormat('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const parse = (v: string) => Number(String(v).replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.')) || 0;
+  const fmtInput = (n: number) => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(n);
+
+  function mount() {
+    const src = document.getElementById('calc-pj-src');
+    const slot = document.querySelector('[data-widget="calc-pj"]');
+    if (!src || !slot) return;
+    slot.replaceWith(src.firstElementChild!);
+    src.remove();
+    const root = document.querySelector<HTMLElement>('.calc')!;
+    const form = root.querySelector('form')!;
+    const out = (k: string) => root.querySelector<HTMLElement>(`[data-out="${k}"]`)!;
+
+    const run = () => {
+      const fd = new FormData(form);
+      const base = {
+        salario: parse(fd.get('salario') as string),
+        beneficiosMensais: parse(fd.get('beneficios') as string),
+        plrAnual: parse(fd.get('plr') as string),
+        dependentes: Number(fd.get('dependentes')) || 0,
+        custosMensais: parse(fd.get('custos') as string),
+        mesesFaturados: Number(fd.get('meses')) || 12,
+      };
+      const m = Math.max(0, Number(fd.get('margem')) || 0) / 100;
+      if (base.salario <= 0) return;
+      const eq = calcular({ ...base, margem: 0 });
+      const sug = calcular({ ...base, margem: m });
+      const best = eq.melhor;
+      out('equivalente').textContent = best ? `${brl.format(best.faturamentoMensal)} por mês` : 'acima do limite do Simples';
+      out('margemPct').textContent = `${Math.round(m * 100)}%`;
+      out('sugerido').textContent = sug.melhor ? brl.format(sug.melhor.faturamentoMensal) : '-';
+      out('anexoMsg').textContent = best
+        ? best.estrategia === 'III'
+          ? `Melhor caminho: pró-labore de ${brl.format(best.proLabore)} para ficar no Anexo III (Fator R de 28%). Isso dá ${(best.faturamentoMensal / base.salario).toFixed(2).replace('.', ',')} vezes o salário CLT.`
+          : `Melhor caminho: pró-labore mínimo no Anexo V. Isso dá ${(best.faturamentoMensal / base.salario).toFixed(2).replace('.', ',')} vezes o salário CLT.`
+        : '';
+
+      const c = eq.clt, a = eq.III, v = eq.V;
+      const cell = (x: number | null | undefined) => (x == null ? '-' : brl.format(x));
+      const rows: [string, (string | number | null | undefined)[], boolean?][] = [
+        ['Faturamento ou salário bruto no ano', [c.brutoAnual, a?.faturamentoAnual, v?.faturamentoAnual]],
+        ['Por mês', [base.salario, a?.faturamentoMensal, v?.faturamentoMensal]],
+        ['INSS', [c.impostos.inss, a?.inssPL, v?.inssPL]],
+        ['Imposto de Renda', [c.impostos.ir, a ? a.irPL + a.irDiv : null, v ? v.irPL + v.irDiv : null]],
+        ['DAS do Simples', [0, a?.das, v?.das]],
+        ['Alíquota efetiva do Simples', ['-', a ? pct.format(a.aliquotaEfetiva) : '-', v ? pct.format(v.aliquotaEfetiva) : '-']],
+        ['Custos da empresa', [0, a?.custos, v?.custos]],
+        ['FGTS depositado', [c.anual.fgts, 0, 0]],
+        ['Benefícios e PLR', [c.anual.beneficios + c.anual.plr, 0, 0]],
+        ['Total que fica com você', [c.total, a?.total, v?.total], true],
+      ];
+      out('tabela').replaceChildren(
+        ...rows.map(([label, vals, strong]) => {
+          const tr = document.createElement('tr');
+          if (strong) tr.className = 'total';
+          const th = document.createElement('th'); th.scope = 'row'; th.textContent = label; tr.append(th);
+          for (const val of vals) {
+            const td = document.createElement('td');
+            td.textContent = typeof val === 'string' ? val : cell(val as number);
+            tr.append(td);
+          }
+          return tr;
+        }),
+      );
+    };
+
+    form.addEventListener('input', run);
+    form.querySelectorAll<HTMLInputElement>('.money input').forEach((i) =>
+      i.addEventListener('blur', () => { i.value = fmtInput(parse(i.value)); }),
+    );
+    run();
+  }
+  mount();
+</script>
+
+<style is:global>
+  .calc { margin: 2em 0; padding: 22px; border: 1px solid #dfe6dc; border-radius: 16px; background: #f6f8f4; font-size: 16px; line-height: 1.5; }
+  .calc-title { font-size: 22px !important; margin: 0 0 14px !important; }
+  .calc-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 680px) { .calc-form { grid-template-columns: 1fr; } }
+  .calc fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .calc legend { font-weight: 700; margin-bottom: 4px; color: var(--brand); }
+  .calc label { display: grid; gap: 4px; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .calc label small { font-weight: 400; color: var(--muted); font-size: 13px; }
+  .calc input, .calc select { font: inherit; font-size: 16px; padding: 9px 11px; border: 1px solid #cfd8cc; border-radius: 10px; background: #fff; width: 100%; }
+  .calc input:focus, .calc select:focus { outline: 2px solid var(--up); border-color: transparent; }
+  .calc .money, .calc .pct { position: relative; display: block; }
+  .calc .money::before { content: 'R$'; position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 500; }
+  .calc .money input { padding-left: 38px; }
+  .calc .pct::after { content: '%'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+  .calc-result { margin-top: 20px; }
+  .calc-highlight { background: var(--brand); color: #fff; border-radius: 14px; padding: 18px 20px; }
+  .calc-highlight p { margin: 0; }
+  .calc-kicker { font-size: 14px; color: #bfe0d1; }
+  .calc-big { font-size: clamp(28px, 5vw, 38px); font-weight: 800; letter-spacing: -0.02em; margin: 2px 0 6px !important; }
+  .calc-sub { color: #e3efe9; font-size: 15px; }
+  .calc-sub + .calc-sub { margin-top: 6px !important; }
+  .calc-table-wrap { overflow-x: auto; margin-top: 16px; }
+  .calc-table { display: table !important; width: 100%; border-collapse: collapse; font-size: 14.5px; background: #fff; border-radius: 10px; overflow: hidden; }
+  .calc-table caption { text-align: left; color: var(--muted); font-size: 13px; padding-bottom: 6px; }
+  .calc-table th, .calc-table td { padding: 8px 10px; border-bottom: 1px solid #e8ece5; text-align: right; white-space: nowrap; }
+  .calc-table th[scope='row'], .calc-table thead th:first-child { text-align: left; white-space: normal; font-weight: 500; }
+  .calc-table thead th { background: #eef2eb; font-weight: 700; vertical-align: bottom; }
+  .calc-table thead small { font-weight: 400; color: var(--muted); }
+  .calc-table tr.total th, .calc-table tr.total td { font-weight: 800; background: #fff8ea; }
+  .calc-note { font-size: 13px; color: var(--muted); margin-top: 10px !important; }
+</style>
