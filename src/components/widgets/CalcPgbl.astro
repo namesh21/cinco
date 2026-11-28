@@ -1,0 +1,183 @@
+---
+// Calculadora de PGBL. Entra no post onde houver <div data-widget="calc-pgbl"></div>.
+---
+<div id="calc-pgbl-src" hidden>
+  <section class="calc" aria-labelledby="calc-pgbl-title">
+    <h2 id="calc-pgbl-title" class="calc-title">Calculadora de PGBL</h2>
+    <form class="calc-form" novalidate>
+      <fieldset class="full">
+        <legend>Requisito</legend>
+        <label class="check"><input type="checkbox" name="inssOk" checked /> Contribuo para o INSS ou para regime próprio de servidor (ou já sou aposentado por um deles)</label>
+      </fieldset>
+      <fieldset>
+        <legend>Sua renda em 2026</legend>
+        <label>Salário ou pró-labore bruto por mês
+          <span class="money"><input name="salario" inputmode="decimal" value="10.000" /></span>
+        </label>
+        <label>Outras rendas tributáveis no ano <small>aluguel, trabalho autônomo</small>
+          <span class="money"><input name="outras" inputmode="decimal" value="0" /></span>
+        </label>
+        <label>INSS pago no ano <small>deixe em branco para calcular</small>
+          <span class="money"><input name="inss" inputmode="decimal" value="" placeholder="automático" /></span>
+        </label>
+        <label>Já aporta em PGBL no ano
+          <span class="money"><input name="pgblAtual" inputmode="decimal" value="0" /></span>
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Suas deduções no ano</legend>
+        <label>Dependentes
+          <input name="dependentes" type="number" min="0" max="10" value="0" />
+        </label>
+        <label>Despesas médicas <small>plano de saúde, consultas, exames</small>
+          <span class="money"><input name="saude" inputmode="decimal" value="0" /></span>
+        </label>
+        <label>Educação <small>escola e faculdade, com limite por pessoa</small>
+          <span class="money"><input name="educacao" inputmode="decimal" value="0" /></span>
+        </label>
+        <label>Pensão alimentícia judicial
+          <span class="money"><input name="pensao" inputmode="decimal" value="0" /></span>
+        </label>
+      </fieldset>
+      <fieldset class="full">
+        <legend>Simulação de longo prazo</legend>
+        <div class="calc-form" style="margin:0">
+          <label>Anos aportando
+            <select name="anos">
+              <option>5</option><option>10</option><option selected>15</option><option>20</option><option>25</option><option>30</option>
+            </select>
+          </label>
+          <label>Quando vai resgatar
+            <select name="espera">
+              <option value="0">Logo após o último aporte</option>
+              <option value="10" selected>10 anos depois do último aporte</option>
+            </select>
+          </label>
+          <label>Rentabilidade esperada por ano
+            <span class="pct"><input name="rentab" type="number" min="0" max="30" step="0.5" value="10" /></span>
+          </label>
+          <label>Taxa de administração do plano
+            <span class="pct"><input name="taxa" type="number" min="0" max="3" step="0.1" value="0.6" /></span>
+          </label>
+        </div>
+      </fieldset>
+    </form>
+
+    <div class="calc-result" aria-live="polite">
+      <div class="calc-highlight">
+        <p class="calc-kicker">Aporte ideal no PGBL para deduzir o máximo</p>
+        <p class="calc-big" data-out="aporte">-</p>
+        <p class="calc-sub">Economia no Imposto de Renda: <strong data-out="economia">-</strong> por ano</p>
+        <p class="calc-sub" data-out="retorno"></p>
+        <p class="calc-verdict" data-out="veredito"></p>
+      </div>
+
+      <div class="calc-table-wrap">
+        <table class="calc-table">
+          <caption>Seu imposto na declaração de 2027 (ano de 2026)</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col">Simplificada</th><th scope="col">Completa sem PGBL</th><th scope="col">Completa com PGBL</th></tr></thead>
+          <tbody data-out="tabelaIR"></tbody>
+        </table>
+      </div>
+
+      <div class="calc-table-wrap">
+        <table class="calc-table">
+          <caption data-out="capProj">Projeção</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col">PGBL + economia reinvestida</th><th scope="col">Mesmo valor em aplicação comum</th></tr></thead>
+          <tbody data-out="tabelaProj"></tbody>
+        </table>
+      </div>
+      <p class="calc-note">Regras da declaração de 2027: tabela anual de 2026, isenção até R$ 60 mil e redução até R$ 88,2 mil (Lei 15.270/2025), desconto simplificado de até R$ 17.640. A projeção usa a tabela regressiva (de 35% a 10% conforme o prazo de cada aporte) e IR de 15% sobre o ganho da aplicação comum. Rentabilidade não é garantida. Use como referência.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+  import { calcularPGBL, projetar } from '../../lib/pgbl.js';
+
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const parse = (v: string) => Number(String(v ?? '').replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.')) || 0;
+  const fmtInput = (n: number) => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(n);
+
+  function mount() {
+    const src = document.getElementById('calc-pgbl-src');
+    const slot = document.querySelector('[data-widget="calc-pgbl"]');
+    if (!src || !slot) return;
+    slot.replaceWith(src.firstElementChild!);
+    src.remove();
+    const root = document.querySelector<HTMLElement>('[aria-labelledby="calc-pgbl-title"]')!;
+    const form = root.querySelector('form')!;
+    const out = (k: string) => root.querySelector<HTMLElement>(`[data-out="${k}"]`)!;
+
+    const fillRows = (key: string, rows: [string, (number | string)[], boolean?][]) => {
+      out(key).replaceChildren(...rows.map(([label, vals, strong]) => {
+        const tr = document.createElement('tr');
+        if (strong) tr.className = 'total';
+        const th = document.createElement('th'); th.scope = 'row'; th.textContent = label; tr.append(th);
+        vals.forEach((v) => { const td = document.createElement('td'); td.textContent = typeof v === 'number' ? brl.format(v) : v; tr.append(td); });
+        return tr;
+      }));
+    };
+
+    const run = () => {
+      const fd = new FormData(form);
+      const inssRaw = String(fd.get('inss') || '').trim();
+      const r = calcularPGBL({
+        salarioMensal: parse(fd.get('salario') as string),
+        outrasRendas: parse(fd.get('outras') as string),
+        inssAnual: inssRaw ? parse(inssRaw) : undefined,
+        contribuiINSS: fd.get('inssOk') === 'on',
+        dependentes: Number(fd.get('dependentes')) || 0,
+        saude: parse(fd.get('saude') as string),
+        educacao: parse(fd.get('educacao') as string),
+        pensao: parse(fd.get('pensao') as string),
+        pgblAtual: parse(fd.get('pgblAtual') as string),
+      });
+
+      out('aporte').textContent = r.podeDeduzir ? `${brl.format(r.aporteFaltante)} por ano` : 'Sem benefício fiscal';
+      out('economia').textContent = brl.format(r.economia);
+      out('retorno').textContent = r.aporteFaltante > 0
+        ? `São ${brl.format(r.aporteFaltanteMensal)} por mês. Cada R$ 100 aportados devolvem ${brl.format(r.retornoFiscal * 100)} de imposto.`
+        : r.podeDeduzir ? 'Você já aporta o limite de 12% da renda.' : '';
+
+      const v = out('veredito');
+      v.classList.remove('no');
+      if (!r.podeDeduzir) { v.textContent = 'Sem contribuição ao INSS ou regime próprio, a lei não permite deduzir o PGBL. Considere o VGBL.'; v.classList.add('no'); }
+      else if (r.renda <= 60000) { v.textContent = 'Com renda tributável até R$ 60 mil no ano, você já é isento. O PGBL não reduz imposto. Considere o VGBL.'; v.classList.add('no'); }
+      else if (r.retornoFiscal < 0.1) { v.textContent = 'O benefício fiscal é pequeno para a sua renda. Compare com o VGBL ou outros investimentos antes de decidir.'; v.classList.add('no'); }
+      else v.textContent = r.modeloHoje === 'simplificado'
+        ? 'Compensa. Com o PGBL, a declaração completa passa a ser melhor que a simplificada.'
+        : 'Compensa. Você já usa a declaração completa e o PGBL aumenta a dedução.';
+
+      fillRows('tabelaIR', [
+        ['Renda tributável', [r.renda, r.renda, r.renda]],
+        ['Deduções', [Math.min(r.renda * 0.2, 17640), r.deducoesSemPGBL, r.deducoesSemPGBL + (r.podeDeduzir ? r.limite : 0)]],
+        ['Imposto devido no ano', [r.irSimplificado, r.irCompletoAtual, r.irCompletoMax], true],
+      ]);
+
+      const anos = Number(fd.get('anos')) || 15;
+      const espera = Number(fd.get('espera')) || 0;
+      const p = projetar({
+        aporteAnual: r.limite, economiaAnual: r.economiaTotal,
+        anos, espera, rentab: (Number(fd.get('rentab')) || 0) / 100, taxaAdm: (Number(fd.get('taxa')) || 0) / 100,
+      });
+      out('capProj').textContent = `Aportando ${brl.format(r.limite)} por ano durante ${anos} anos${espera ? `, com resgate ${espera} anos depois` : ', com resgate logo em seguida'}`;
+      fillRows('tabelaProj', [
+        ['Total aportado do seu bolso', [p.aportado, p.aportado]],
+        ['Saldo bruto no resgate', [p.pgblBruto, p.altBruto]],
+        ['Imposto no resgate', [p.pgblIR, p.altBruto - p.altLiq]],
+        ['Economia de IR reinvestida (líquida)', [p.reinvestLiq, '-']],
+        ['Total líquido', [p.totalPGBL, p.altLiq], true],
+        ['Diferença a favor do PGBL', [p.diferenca, '-']],
+      ]);
+    };
+
+    form.addEventListener('input', run);
+    form.addEventListener('change', run);
+    form.querySelectorAll<HTMLInputElement>('.money input').forEach((i) =>
+      i.addEventListener('blur', () => { if (i.value.trim()) i.value = fmtInput(parse(i.value)); }),
+    );
+    run();
+  }
+  mount();
+</script>

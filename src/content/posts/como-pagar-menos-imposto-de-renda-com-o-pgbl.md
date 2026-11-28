@@ -14,6 +14,9 @@ cover:
 author: "redacao"
 wpId: 235
 ---
+
+> **Atualizado para 2027:** simule o seu aporte e a economia de imposto na nossa [calculadora de PGBL](/calculadora-pgbl/), já com a isenção de R$ 60 mil por ano.
+
 *Entenda como deduzir até 12% da sua base de cálculo do IRPF através do plano de previdência privada PGBL*
 
 Está aberto o período de caça do Leão da Receita Federal. Entre 1º de março e 30 de abril, os cidadãos não isentos – você pode ver quem deve declarar AQUI – devem declarar sua renda anual à Receita Federal.

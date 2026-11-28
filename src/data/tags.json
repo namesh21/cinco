@@ -15,7 +15,7 @@
     "slug": "imposto-de-renda",
     "name": "imposto de renda",
     "description": "",
-    "count": 6
+    "count": 7
   },
   {
     "slug": "investimentos",
@@ -1011,7 +1011,7 @@
     "slug": "pgbl",
     "name": "PGBL",
     "description": "",
-    "count": 1
+    "count": 2
   },
   {
     "slug": "piramide-financeira",
@@ -1334,6 +1334,12 @@
   {
     "slug": "reforma-tributaria",
     "name": "reforma tributária",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "previdencia-privada",
+    "name": "previdência privada",
     "description": "",
     "count": 1
   }
