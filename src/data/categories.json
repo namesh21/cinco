@@ -21,7 +21,7 @@
     "slug": "empresas",
     "name": "Empresas",
     "description": "Guias, informações e noticias sobre empresas listadas na Bolsa.",
-    "count": 10
+    "count": 11
   },
   {
     "slug": "renda-fixa",
@@ -51,6 +51,6 @@
     "slug": "quem-e",
     "name": "Quem é",
     "description": "Biografias de investidores, CEOs e pessoas relevantes no mercado financeiro.",
-    "count": 3
+    "count": 4
   }
 ]

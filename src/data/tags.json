@@ -1342,5 +1342,23 @@
     "name": "previdência privada",
     "description": "",
     "count": 1
+  },
+  {
+    "slug": "bradesco",
+    "name": "Bradesco",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "bancos",
+    "name": "bancos",
+    "description": "",
+    "count": 1
+  },
+  {
+    "slug": "biografia",
+    "name": "biografia",
+    "description": "",
+    "count": 1
   }
 ]
