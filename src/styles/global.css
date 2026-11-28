@@ -11,7 +11,7 @@
   --gold: #e8a73a;
   --radius: 14px;
   --wrap: 1180px;
-  --narrow: 740px;
+  --narrow: 820px;
   --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
 }
@@ -210,3 +210,44 @@ h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 .5em; }
   .calc-actions { margin: 14px 0 0 !important; }
   .calc-btn { font: inherit; font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 10px; border: 1px solid var(--brand-2); background: #fff; color: var(--brand-2); cursor: pointer; }
   .calc-btn:hover { background: var(--brand-2); color: #fff; }
+
+/* Post no desktop: blocos visuais mais largos que o texto */
+@media (min-width: 1100px) {
+  .post > .post-cover,
+  .post .calc { margin-left: -90px; margin-right: -90px; }
+  .post .prose > table { width: calc(100% + 180px); margin-left: -90px; margin-right: -90px; }
+}
+
+/* Post em tela grande: índice "Neste artigo" fixo na lateral */
+@media (min-width: 1280px) {
+  .post:has(> .toc) {
+    max-width: calc(780px + 56px + 240px + 40px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    column-gap: 56px;
+    grid-auto-flow: row dense;
+    align-items: start;
+  }
+  .post:has(> .toc) > * { grid-column: 1; min-width: 0; }
+  .post:has(> .toc) > .post-header { grid-column: 1 / -1; }
+  .post:has(> .toc) > .post-cover { margin-left: 0; margin-right: 0; }
+  .post:has(> .toc) .calc { margin-left: 0; margin-right: 0; }
+  .post:has(> .toc) > .post-header > * { max-width: 780px; }
+  .post:has(> .toc) .prose > table { width: 100%; margin-left: 0; margin-right: 0; }
+  .post:has(> .toc) > .toc {
+    grid-column: 2; grid-row: 2 / span 2;
+    position: sticky; top: 88px;
+    max-height: calc(100vh - 110px); overflow-y: auto;
+    margin: 6px 0 0; padding: 2px 0 2px 18px;
+    background: none; border: 0; border-left: 2px solid #dfe6dc; border-radius: 0;
+    font-size: 15px; line-height: 1.4;
+  }
+  .post > .toc summary { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); list-style: none; }
+  .post > .toc summary { pointer-events: none; }
+  .post > .toc summary::-webkit-details-marker { display: none; }
+  .post > .toc ol { list-style: none; padding-left: 0; margin-top: 12px; }
+  .post > .toc li { margin: 0; }
+  .post > .toc a { display: block; padding: 6px 0; color: var(--ink-2); text-decoration: none; }
+  .post > .toc a:hover { color: var(--brand); }
+  .post > .toc a[aria-current="true"] { color: var(--brand); font-weight: 700; }
+}
