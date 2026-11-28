@@ -2,7 +2,7 @@
 title: "Calculadora de PGBL: quanto aportar e quanto você economiza no IR"
 description: "Simule o aporte ideal no PGBL, a economia no Imposto de Renda de 2027 e o resultado em 10, 15 ou 20 anos. Veja se o PGBL compensa com a nova isenção."
 pubDate: "2026-11-28T17:30:00Z"
-updatedDate: "2026-11-28T17:30:00Z"
+updatedDate: "2026-11-28T18:30:00Z"
 category: "impostos"
 categories: ["impostos", "dicas"]
 tags: ["pgbl", "imposto-de-renda", "previdencia-privada"]
@@ -16,7 +16,7 @@ widgets: ["calc-pgbl"]
 ---
 O PGBL é um plano de previdência privada que permite abater do Imposto de Renda até 12% da sua renda tributável. Para muita gente, é o jeito mais simples de pagar menos imposto dentro da lei. Mas ele não serve para todo mundo, e a isenção de 2026 mudou a conta para quem ganha menos.
 
-Use a calculadora abaixo para saber quanto aportar, quanto você economiza e se o PGBL vale a pena no seu caso.
+Use a calculadora abaixo para saber quanto aportar, quanto você economiza e se o PGBL vale a pena no seu caso. Ela compara o PGBL com o VGBL e com um investimento comum, mostra a partir de quantos anos o PGBL passa a ganhar e funciona também para aposentados. O link da página guarda os seus números, então dá para salvar ou enviar a simulação.
 
 <div data-widget="calc-pgbl"></div>
 
@@ -69,13 +69,23 @@ Para quem usa o PGBL pensando em 10 anos ou mais, a regressiva costuma ser a esc
 
 Na tabela regressiva, cada aporte conta o próprio prazo. Se você aporta durante 10 anos e resgata tudo no fim, o aporte do último ano paga 35%. O do penúltimo, 35% também. Só os aportes mais antigos chegam a 10%.
 
-Na calculadora, compare as duas opções de resgate. Para o salário de R$ 10.000:
+Na calculadora, compare as opções de resgate. Para o salário de R$ 10.000, contra um CDB ou o Tesouro:
 
-- Aportando por 10 anos e resgatando logo depois, o PGBL termina cerca de R$ 8,9 mil **atrás** de uma aplicação comum.
-- Aportando por 15 anos e resgatando logo depois, termina cerca de R$ 12 mil à frente.
+- Aportando por 10 anos e resgatando logo depois, o PGBL termina cerca de R$ 6,4 mil **atrás**.
+- Aportando por 15 anos e resgatando logo depois, termina cerca de R$ 14,5 mil à frente.
 - Aportando por 15 anos e esperando 10 anos para resgatar, termina cerca de R$ 90 mil à frente.
 
-A conta supõe 10% de rentabilidade ao ano, taxa de administração de 0,6% e a economia de IR reinvestida todo ano.
+Com resgate logo após o último aporte, o PGBL só passa a ganhar a partir de 12 anos de aportes. A conta supõe 10% de rentabilidade ao ano, taxa de administração de 0,6% e a economia de IR reinvestida todo ano.
+
+### PGBL contra fundos: o come-cotas
+
+Fundos de investimento comuns pagam o come-cotas: a cada seis meses, parte do imposto sobre o ganho é cobrada antes do resgate. Esse dinheiro deixa de render. Na previdência, isso não acontece. Por isso, contra um fundo, a vantagem do PGBL aumenta. No mesmo exemplo de 15 anos com espera de 10, a diferença para o fundo sobe para cerca de R$ 222 mil. A calculadora tem essa opção no campo "Comparar com".
+
+## Para aposentados
+
+Quem é aposentado pelo INSS ou por regime próprio pode deduzir o PGBL sem continuar contribuindo. Quem tem 65 anos ou mais ainda conta com uma parcela isenta de R$ 1.903,98 por mês sobre a aposentadoria, a partir do mês do aniversário. Aposentados com doença grave prevista em lei são isentos.
+
+Na prática, sem INSS para deduzir, muitos aposentados ficam melhor na declaração simplificada, e o PGBL não ajuda. A calculadora mostra isso quando é o seu caso.
 
 ## Quando o PGBL não compensa
 

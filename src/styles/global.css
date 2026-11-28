@@ -206,3 +206,7 @@ h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 .5em; }
   .calc-verdict { margin-top: 10px !important; font-weight: 600; }
   .calc-verdict.no { color: #ffd9a3; }
   .calc-table td.muted { color: var(--muted); }
+  .calc-virada { color: var(--ink) !important; font-weight: 600; margin: 18px 0 0 !important; }
+  .calc-actions { margin: 14px 0 0 !important; }
+  .calc-btn { font: inherit; font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 10px; border: 1px solid var(--brand-2); background: #fff; color: var(--brand-2); cursor: pointer; }
+  .calc-btn:hover { background: var(--brand-2); color: #fff; }
